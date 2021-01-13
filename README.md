@@ -4,7 +4,7 @@ Despite recent advances in understanding the relationship between consciousness 
 
 
 <img src="https://user-images.githubusercontent.com/54903919/104475918-f310a180-55bf-11eb-9340-5008d776fb02.jpg" width="420" height="420">
-*Figure*: Example of a trial sequence: A trial started with a central fixation presented for 500ms followed by a blank of same duration. 
+Figure: Example of a trial sequence: A trial started with a central fixation presented for 500ms followed by a blank of same duration. 
 Next the target grating appeared for 33.33 ms followed by the backward mask with a duration of 350ms. 
 After the mask’s offset another 1.5 s remained for the categorization response. 
 At the end of the trial participants were asked to rate their subjective level of awareness using the 4-point PAS.
