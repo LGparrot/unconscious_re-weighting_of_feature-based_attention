@@ -1,6 +1,6 @@
 # Background
 
-Despite recent advances in understanding the relationship between consciousness and visual attention, the functional scope of unconscious attentional control is still under debate. This study shows a novel masking paradigm in which volunteers were to distinguish between varying orientations of a briefly presented, masked grating stimulus. Combining signal detection theory and subjective measures of awareness, we show that performance on unaware trials was consistent with visual selection being weighted towards repeated orientations of Gabor patches and reallocated in response to a novel unconsciously processed orientation. This was particularly present in trials in which the prior feature was strongly weighted and only if the novel feature was invisible. Thus, our results provide evidence that invisible orientation stimuli can trigger the reallocation of top-down visual selection weights.
+Despite recent advances in understanding the relationship between consciousness and visual attention, the functional scope of unconscious attentional control is still under debate. This study shows a novel masking paradigm (see Figure below for an example of a trial sequence) in which volunteers were to distinguish between varying orientations of a briefly presented, masked grating stimulus. Combining signal detection theory and subjective measures of awareness, we found that performance on unaware trials was consistent with visual selection being weighted towards repeated orientations of Gabor patches and reallocated in response to a novel unconsciously processed orientation. This was particularly present in trials in which the prior feature was strongly weighted and only if the novel feature was invisible. Thus, our results provide evidence that invisible orientation stimuli can trigger the reallocation of top-down visual selection weights.
 
 
 <img src="https://user-images.githubusercontent.com/54903919/104475918-f310a180-55bf-11eb-9340-5008d776fb02.jpg" width="420" height="420">
@@ -14,7 +14,7 @@ Top right shows an example for the switch condition:
 the left-tilted target grating is followed by a vertical in the next trial. 
 
 
-
+This repository contains the original data and analysis scripts.
 
 # 
 
