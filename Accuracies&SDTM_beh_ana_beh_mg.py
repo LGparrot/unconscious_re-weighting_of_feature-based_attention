@@ -38,10 +38,6 @@ nTrials=36
 
 count_nan=0
 
-
-'''
-sub1 gerade blöcke -> 3 also rechts, ungerade 2 also links '''
-
 nSubs=[1,2,3,4,7]#b=14
 #nSubs=[8]#b=12
 #nSubs=[9,10,11]#b=14
