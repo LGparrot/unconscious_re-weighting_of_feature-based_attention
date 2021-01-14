@@ -59,7 +59,7 @@ def all_indices(value, qlist):
         return indices
 
 
-''' this is how I try to avoid excessive loops to asign values to keys in dic according to indices'''
+''' function to avoid excessive loops to asign values to keys in dic according to indices'''
 
 
 def TrialFinder_switch(ind,ind2,dic_entry,dv,block): #ind = indices (list), dic=dic with condis for odd and even , dv = dependent variable
@@ -102,44 +102,6 @@ def DIC_WRITER(dic_list,labels): #put list with title and lables of the dictiona
         
         return title
 
-Z = norm.ppf  
- 
-def dPrime(hits, misses, fas, crs):
-    vals=[hits,misses,fas,crs]
-    if all(vals)>0:
-    # Floors an ceilings are replaced by half hits and half FA's
-        halfHit = 0.5/(hits+misses)
-        halfFa = 0.5/(fas+crs)
-     
-        # Calculate hitrate and avoid d' infinity
-    
-        hitRate = hits/(hits+misses)
-        if hitRate == 1: hitRate = 1-halfHit
-        if hitRate == 0: hitRate = halfHit
-     
-        # Calculate false alarm rate and avoid d' infinity
-    
-        faRate = fas/(fas+crs)
-        if faRate == 1: faRate = 1-halfFa
-        if faRate == 0: faRate = halfFa
-     
-        # Return d', beta, c and Ad'
-        out = {}
-        out['d'] = Z(hitRate) - Z(faRate) #that´s for a yes/no task!!!
-        out['beta'] = exp((Z(faRate)**2 - Z(hitRate)**2)/2)
-        out['c'] = -(Z(hitRate) + Z(faRate))/2
-        out['Ad'] = norm.cdf(out['d']/sqrt(2))
-        
-    else:    
-        out = {}
-        out['d']=999
-        out['beta']=999
-        out['c'] =999 
-        out['Ad'] =999
-  
-    return out   
-
-#
 
 def trimm(list_n):
     if len(list_n)>0:
@@ -180,7 +142,7 @@ for sub in nSubs:
     ''' make dictionaries containing lists to collect the values of each condition across all blocks '''
     '''Condition Info and abbreviations: 
         
-                       freq = frequent orientation (either left or right - if subject ID < 8 and an even number ,e.g., 4, even blocks were right weighted (python starts with 0 so first block is even!!))
+                     freq = frequent orientation (either left or right - if subject ID < 8 and an even number ,e.g., 4, even blocks were right weighted (python starts with 0 so first block is even!!))
                        
                      infreq = infrequent orientation (either left or right)
                      
