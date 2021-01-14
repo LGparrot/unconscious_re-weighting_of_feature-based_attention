@@ -1,0 +1,32 @@
+# Abbreviations used in the scripts for data analysis:
+
+sub / SUB
+ori = orientation
+freq = frequent orientation [either left (<180°) or right tilted (>180°) Gabor orientations] infreq = infrequent
+vertic = vertical (180°), coded with 1
+left = left tilted Gabor, coded with 2
+right = right tilted Gabor, coded with 3
+RT / rt = reaction time
+avRT = RTs in which the switch condition comprised all possible switch trials
+ACC / acc = accuracy (1-error rate)
+AL = awareness level (1-4)
+
+
+# Analysis Guide
+
+Folders “sub001-009” and “sub010-sub017” contain the behavioral data obtain in the orientation discrimination task. 
+There are separate files for each subject and each run that were included in the final analysis. 
+All data was stored in Python’s pickle format that is used for data serialization which refers 
+to converting an object in memory to a byte stream. This character stream can then be retrieved 
+and de-serialized back to a Python object. The analysis scripts unpickle (de-serialized) the files 
+for reading and create a dictionary containing all relevant information collected during the experimental session. 
+All scripts were written in Python 2.7 but work smoothly in Python 3.8.
+
+For analysis of RT data use “RT_analysis_mg_beh_mg.py”.
+
+Use “Accuracies&SDTM_beh_ana_beh_mg.py” to calculate accuracies and signal detection measures.
+
+To conduct the control analysis mentioned in the paper and supplementary material, 
+use “pre_traget_RT_analysis_beh_mg.py” (removes trials prior to an orientation changes rated as partially or almost fully aware) 
+and “random_sample_RT_analysis_mg_beh.py” to calculate RTs where the number of unaware switch trials was matched with the number 
+randomly sampling an equal number of partially and almost fully aware switch trials
