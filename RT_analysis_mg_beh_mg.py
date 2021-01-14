@@ -20,7 +20,34 @@ from scipy.stats import norm
 from math import exp,sqrt
 from datetime import datetime
 
-
+'''Condition Info and abbreviations: 
+        
+                     freq = frequent orientation (either left or right - if subject ID < 8 and an even number ,e.g., 4, even blocks were right weighted (python starts with 0 so first block is even!!), order reversed with subject ID >=8)
+                       
+                     infreq = infrequent orientation (either left or right)
+                     
+                     vertic = vertical orientation
+                     
+                     sw = switch -> orientation change between trial n-1 and trial n
+                     
+                     freq2infreq = orientation change from the frequent to the infrequent tilt
+                     
+                     freq2vertic = orientation change from the frequent to the vertical orientation
+                     
+                     ...
+                     
+                     ori = orientation (1 = vertical, 2 = left, 3 = right)
+                     
+                     sub / SUB = subject
+                     
+                     n_ = variable storing the number of trials for the respective condition
+                     
+                     ns = no switch -> repeating orientation from trial n-1 to trial n
+                     
+                     RT / rt = Reaction times
+                                   
+    
+'''
 
 '''change path here  '''
 
@@ -140,23 +167,7 @@ for sub in nSubs:
 
    
     ''' make dictionaries containing lists to collect the values of each condition across all blocks '''
-    '''Condition Info and abbreviations: 
-        
-                     freq = frequent orientation (either left or right - if subject ID < 8 and an even number ,e.g., 4, even blocks were right weighted (python starts with 0 so first block is even!!))
-                       
-                     infreq = infrequent orientation (either left or right)
-                     
-                     vertic = vertical orientation
-                     
-                     sw = switch -> orientation change between trial n-1 and trial n
-                     
-                     ns = no switch -> repeating orientation from trial n-1 to trial n
-                     
-                     RT/rt = Reaction times
-                     
-    
-    '''
-    #make some dictionaries to collect RTs for each condtion / type of trial
+    #make some dictionaries to collect RTs for each condtion / type of switch and repeat trial
     freq2infreq_rt={}
     infreq2freq_rt={}
     freq2vertic_rt={}
@@ -214,11 +225,11 @@ for sub in nSubs:
     '''dictionray that will later contain number of trials for each level of awareness '''
   
     
-    aware_lvls={}
+    aware_lvls={} #awareness levels
     for a in range(1,5):
         aware_lvls['all_AL{0}'.format(a)]=[]
         
-    all_nans=np.zeros(shape=(nBlocks))
+    all_nans=np.zeros(shape=(nBlocks)) # all trials with nan
     all_nans_recog=np.zeros(shape=(nBlocks))
 
     '''make lists to collect values for regression format'''
@@ -240,14 +251,14 @@ for sub in nSubs:
     bcount=0#
     nancount=0
     for block in range(nBlocks):
-        bcount=bcount+1
-        awareness_levels = np.zeros(shape=(nTrials)) #will be overwritten by a consequent block
+        bcount=bcount+1 # not the same as block! = block +1
+        awareness_levels = np.zeros(shape=(nTrials)) #these lists will be overwritten by a consequent block
         sub_acc=np.zeros(shape=(nTrials))
         sub_rt=np.zeros(shape=(nTrials))
         ori=np.zeros(shape=(nTrials))
         dummy=np.zeros(shape=(nTrials))
         switch=np.zeros(shape=(nTrials))
-        prior_ori=np.zeros(shape=(nTrials))
+        prior_ori=np.zeros(shape=(nTrials)) # orientation of the previous trial
 
         '''lists for ROC analysis'''
         actual=np.zeros(shape=(nTrials))
@@ -438,9 +449,6 @@ for sub in nSubs:
                     n_vertic2infreq['3'].append(len(sw_vertic2left_AL3_ind))
                     n_vertic2infreq['4'].append(len(sw_vertic2left_AL4_ind))
                     
-                    
-                    
-    
                 elif bcount % 2 !=0:
                     n_freq2infreq['1'].append(len(sw_left2right_AL1_ind))
                     n_freq2infreq['2'].append(len(sw_left2right_AL2_ind))
@@ -505,9 +513,6 @@ for sub in nSubs:
                     n_vertic2infreq['3'].append(len(sw_vertic2left_AL3_ind))
                     n_vertic2infreq['4'].append(len(sw_vertic2left_AL4_ind))
                     
-                    
-                    
-    
                 elif bcount % 2 ==0:
                     n_freq2infreq['1'].append(len(sw_left2right_AL1_ind))
                     n_freq2infreq['2'].append(len(sw_left2right_AL2_ind))
@@ -638,9 +643,7 @@ for sub in nSubs:
                     n_vertic2infreq['3'].append(len(sw_vertic2left_AL3_ind))
                     n_vertic2infreq['4'].append(len(sw_vertic2left_AL4_ind))
                     
-                    
-                    
-    
+
                 elif bcount % 2 !=0:
                     n_freq2infreq['1'].append(len(sw_left2right_AL1_ind))
                     n_freq2infreq['2'].append(len(sw_left2right_AL2_ind))
@@ -671,8 +674,6 @@ for sub in nSubs:
                     n_vertic2freq['2'].append(len(sw_vertic2left_AL2_ind))
                     n_vertic2freq['3'].append(len(sw_vertic2left_AL3_ind))
                     n_vertic2freq['4'].append(len(sw_vertic2left_AL4_ind))
-                    
-
 
         '''no change trials'''
         condi_zip1=list(zip(ori,awareness_levels,switch))
@@ -1086,8 +1087,8 @@ for sub in nSubs:
     rt_av_sw_al1=np.nanmean([mean_freq2infreq_rt['1'],mean_freq2vertic_rt['1'],mean_infreq2freq_rt['1'],mean_infreq2vertic_rt['1'],
                              mean_vertic2freq_rt['1'],mean_vertic2infreq_rt['1']])
     
-    RT.append(rt_spec_sw_al1)
-    avRT.append(rt_av_sw_al1)
+    RT.append(rt_spec_sw_al1) # weighted RTs (switch condition comprises only swicthes away from the weighted (frequent) orientation
+    avRT.append(rt_av_sw_al1) # average RT (switch condition contains all possible orientation chnages)
     AL.append('AL1')
     SW.append('switch')
     SUB.append(sub)
