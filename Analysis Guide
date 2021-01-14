@@ -29,4 +29,4 @@ Use “Accuracies&SDTM_beh_ana_beh_mg.py” to calculate accuracies and signal d
 To conduct the control analysis mentioned in the paper and supplementary material, 
 use “pre_traget_RT_analysis_beh_mg.py” (removes trials prior to an orientation changes rated as partially or almost fully aware) 
 and “random_sample_RT_analysis_mg_beh.py” to calculate RTs where the number of unaware switch trials was matched with the number 
-randomly sampling an equal number of partially and almost fully aware switch trials
+randomly sampling an equal number of partially and almost fully aware switch trials.
