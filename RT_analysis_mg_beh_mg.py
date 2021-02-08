@@ -354,7 +354,7 @@ for sub in nSubs:
             
             if sub_rt[t]==0:
                 nancount=nancount+1
-                sub_rt[t]='nan'
+                sub_rt[t]=np.nan
 
             
             all_nans_recog[block]=count_nan_recog
